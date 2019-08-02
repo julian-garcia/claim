@@ -1,0 +1,21 @@
+<div class="fnol-form__section">
+  <h2 class="fnol-form__title">Your Claim</h2>
+
+  <dlg-field [config]="formData.incidentDate" [formGroup]="form">
+    <dlg-datepicker type="select" [format]="formData.incidentDate.format" ></dlg-datepicker>
+  </dlg-field>
+
+  <dlg-field [config]="formData.whatHappened" [formGroup]="form">
+    <textarea [placeholder]="formData.whatHappened.placeholder" [id]="formData.whatHappened.name" [formControlName]="formData.whatHappened.name" class="dlg-textarea"></textarea>
+  </dlg-field>
+
+  <dlg-field [config]="formData.claimLocation" [formGroup]="form">
+    <dlg-radio></dlg-radio>
+  </dlg-field>
+
+  <dlg-field [config]="formData.occupied" [formGroup]="form" *ngIf="showOccupied">
+    <dlg-radio></dlg-radio>
+  </dlg-field>
+
+  <!-- {{ formData | json }} -->
+</div>

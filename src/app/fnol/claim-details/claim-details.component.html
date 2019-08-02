@@ -1,0 +1,74 @@
+<div class="fnol-form__section">
+  <h2 class="fnol-form__title">Claim Details</h2>
+
+  <dlg-field [config]="formData.damage" [formGroup]="form">
+    <dlg-radio></dlg-radio>
+  </dlg-field>
+
+  <div class="fnol-form__items" *ngIf="showDamagedItems">
+    <h3 class="fnol-form__subtitle">Damaged Items</h3>
+
+    <dlg-field [config]="formData.itemType" [formGroup]="form">
+      <dlg-input></dlg-input>
+    </dlg-field>
+  
+    <dlg-field [config]="formData.itemMakeModel" [formGroup]="form">
+      <dlg-input></dlg-input>
+    </dlg-field>
+  
+    <dlg-field [config]="formData.itemPrice" [formGroup]="form">
+      <dlg-input></dlg-input>
+    </dlg-field>
+
+    <div class="dlg-field__error item-list" *ngIf="damagedItemList && damagedItemList.length == 0">
+      As you have selected "Contents" / "Both", please add at least one item
+    </div>
+
+    <button dlg-button (click)="addItem()" theme="primary" size="toolbar" [disabled]="disableAddItem">Add Item</button>
+
+    <table class="fnol-form__item-table" *ngIf="damagedItemList && damagedItemList.length > 0">
+      <thead>
+        <th class="fnol-form__list-heading">Item</th>
+        <th class="fnol-form__list-heading">Make/Model</th>
+        <th class="fnol-form__list-heading">Price</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of damagedItemList; let i = index">
+          <td class="fnol-form__list-item">{{ item.type }}</td>
+          <td class="fnol-form__list-item">{{ item.make }}</td>
+          <td class="fnol-form__list-item">{{ item.price }}</td>
+          <td class="fnol-form__list-button">
+            <button dlg-button (click)="removeItem(i, 'damagedItemList')" theme="primary" size="toolbar">
+              <img src="../../assets/images/delete.png" alt="Personal Details">
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="fnol-form__subtitle">Supporting Documents</h3>
+  <div class="dlg-hint__text">{{ formData.fileUploads.hint.text }}</div>
+
+  <dlg-field [config]="formData.fileUploads" [formGroup]="form" class="fnol-form__uploads">
+    <input type="file" [id]="formData.fileUploads.name" [formControlName]="formData.fileUploads.name" class="dlg-file-upload" (change)="onFileUpload($event)">
+  </dlg-field>
+
+  <table class="fnol-form__item-table" *ngIf="fileUploadList && fileUploadList.length > 0">
+    <thead>
+      <th class="fnol-form__list-heading">File name</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of fileUploadList; let i = index">
+        <td class="fnol-form__list-item">{{ item }}</td>
+        <td class="fnol-form__list-button">
+          <button dlg-button (click)="removeItem(i, 'fileUploadList')" theme="primary" size="toolbar">
+            <img src="../../assets/images/delete.png" alt="Personal Details">
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- {{ formData.fileUploads | json }} -->
+</div>

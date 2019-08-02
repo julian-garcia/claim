@@ -1,0 +1,11 @@
+<h2 class="fnol-form__subtitle fnol-form__emergency">For emergencies call us on: <strong>0123456789</strong></h2>
+<form id="fnol-form" data-di-form-track data-di-form-id="fnol-form" [formGroup]="form">
+  <app-personal-details (validPersonalDetails)='retrievePersonalDetails($event)'></app-personal-details>
+  <app-claim-overview (validClaimOverview)='retrieveClaimOverview($event)'></app-claim-overview>
+  <app-claim-details (validClaimDetails)='retrieveClaimDetails($event)'></app-claim-details>
+  <app-confirmation (validConfirmation)='retrieveConfirmation($event)'></app-confirmation>
+</form>
+<button dlg-button [disabled]="!isFormValid()" (click)="submitClaim()" class="fnol-submit">
+  <span *ngIf="!isFormValid()">Please complete the form</span>
+  <span *ngIf="isFormValid()">Make a claim</span>
+</button>

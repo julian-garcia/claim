@@ -1,0 +1,29 @@
+.fnol-form {
+
+  &__item-table {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  &__list-item, &__list-heading {
+    text-align: center;
+    line-height: 46px;
+  }
+
+  &__list-heading {
+    font-weight: bold;
+  }
+
+  &__list-button {
+    padding: 0;
+    text-align: right;
+
+    button {
+      margin: 0;
+    }
+
+    img {
+      height: 1rem;
+    }
+  }
+}

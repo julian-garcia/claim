@@ -1,0 +1,31 @@
+<div class="fnol-form__section">
+  <h2 class="fnol-form__title">Personal Details</h2>
+
+  <dlg-field [config]="formData.fullName" [formGroup]="form">
+    <dlg-input></dlg-input>
+  </dlg-field>
+
+  <dlg-field [config]="formData.postCode" [formGroup]="form" class="last-field">
+    <dlg-input></dlg-input>
+  </dlg-field>
+
+  <button dlg-button [disabled]="!isAutofillable()" (click)="getPolicyHolder()" class="fnol-autofill">Find my details</button>
+
+  <dlg-field [config]="formData.phoneNumber" [formGroup]="form">
+    <dlg-input></dlg-input>
+  </dlg-field>
+
+  <dlg-field [config]="formData.emailAddress" [formGroup]="form">
+    <dlg-input></dlg-input>
+  </dlg-field>
+
+  <dlg-field [config]="formData.addressLine" [formGroup]="form">
+    <dlg-input></dlg-input>
+  </dlg-field>
+
+  <h3 class="fnol-form__subtitle" *ngIf="policyNumber">
+    Your policy number: {{ policyNumber }} 
+    <span *ngIf="excess"><br>Your excess: £{{ excess }}</span>
+  </h3>
+
+</div>

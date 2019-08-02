@@ -1,0 +1,8 @@
+<h2 class="fnol-form__subtitle">{{ data.title }}</h2>
+<p class="modal-confirmation__message">{{ data.message1 }}</p>
+<p class="modal-confirmation__message">{{ data.message2 }}</p>
+<dlg-modal-actions>
+  <button dlg-button (click)="onClose()" class="modal-confirmation__button">
+    {{ data.button }}
+  </button>
+</dlg-modal-actions>
