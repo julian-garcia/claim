@@ -111,6 +111,7 @@ export class PersonalDetailsComponent implements OnInit, OnDestroy, AfterViewIni
 
   ngAfterViewInit() {
     this.decibel.setTrackingAttributes(this.formData);
+    document.getElementById('fullName').focus();
   }
 
   ngOnInit() {
@@ -162,17 +163,13 @@ export class PersonalDetailsComponent implements OnInit, OnDestroy, AfterViewIni
       this.formValues = values;
       this.validPersonalDetails.emit(this.formValues);
     });
-    window.addEventListener('DOMContentLoaded', this.focusName, true);
   }
 
   ngOnDestroy() {
-    window.removeEventListener('DOMContentLoaded', this.focusName, true);
     this.formSubscription.unsubscribe();
     this.formNameSubscription.unsubscribe();
     this.formPostcodeSubscription.unsubscribe();
   }
-
-  focusName = (): void => { document.getElementById('fullName').focus(); };
 
   buildForm() {
     this.form = this.fb.group({

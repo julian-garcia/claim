@@ -82,13 +82,22 @@ export class FnolComponent implements OnInit {
   submitClaim() {
     if (this.personalData) {
       this.formData.personalDetails = this.personalData;
-      this.formData.claimOverview = this.claimOverviewData;
-      this.formData.claimDetailsData = this.claimDetailsData;
-      this.formData.confirmationData = this.confirmationData;
     } else {
       this.formData.personalDetails = this.storedPersonalData;
+    }
+    if (this.claimOverviewData) {
+      this.formData.claimOverview = this.claimOverviewData;
+    } else {
       this.formData.claimOverview = this.storedclaimOverviewData;
+    }
+    if (this.claimDetailsData) {
+      this.formData.claimDetailsData = this.claimDetailsData;
+    } else {
       this.formData.claimDetailsData = this.storedclaimDetailsData;
+    }
+    if (this.confirmationData) {
+      this.formData.confirmationData = this.confirmationData;
+    } else {
       this.formData.confirmationData = this.storedconfirmationData;
     }
 
