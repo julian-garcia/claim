@@ -15,7 +15,7 @@ app-progress-bar {
   z-index: 999;
 
   &__logo {
-    height: 2rem;
+    height: 3rem;
     margin: 0 auto;
     border: none;
 
@@ -111,6 +111,8 @@ app-progress-bar {
     align-items: center;
     justify-items: center;
     grid-row-gap: 20px;
+    min-height: 3rem;
+    padding: 1rem 0;
 
     .badge {
       background-color: darkred;
@@ -124,7 +126,7 @@ app-progress-bar {
       text-align: center;
       margin-left: 10px;
     }
-    
+
     .active-status, .inactive-status {
       font-weight: bold;
     }
