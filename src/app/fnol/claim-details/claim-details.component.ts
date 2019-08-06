@@ -95,12 +95,13 @@ export class ClaimDetailsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    this.progressStep = document.querySelector('.progress__step3');
     this.decibel.setTrackingAttributes(this.formData);
   }
 
   ngOnInit() {
     this.buildForm();
-    this.progressStep = document.querySelector('.progress__step3');
+
     this.showDamagedItems = (
       this.storage.retrieveSectionValue(this.sectionName, 'damage') !== 'Building' &&
       this.storage.retrieveSectionValue(this.sectionName, 'damage')) ? true : false;

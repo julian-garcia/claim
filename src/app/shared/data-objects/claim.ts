@@ -16,4 +16,5 @@ export class Claim {
   termsConditions: string;
   awareExcess: string;
   convictions: string;
+  status: string;
 }

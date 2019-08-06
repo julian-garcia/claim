@@ -118,7 +118,8 @@ export class FnolComponent implements OnInit {
       callbackSlot: this.formData.confirmationData.callbackSlot,
       termsConditions: this.formData.confirmationData.termsConditions,
       awareExcess: this.formData.confirmationData.awareExcess,
-      convictions: this.formData.confirmationData.convictions
+      convictions: this.formData.confirmationData.convictions,
+      status: 'Logged'
     };
     this.dataService.postClaimData(postClaim)
       .subscribe(post => {
@@ -131,20 +132,20 @@ export class FnolComponent implements OnInit {
               A claims handler will assess your claim
               and will call you back to confirm details.`;
           const confirmationMessage2 = `
-              We have emailed you details of your claim for future reference. Click below for a more detailed view of next steps.`;
+              We have emailed you details of your claim for future reference. Click below to see your current claim status and next steps.`;
 
           const modal = this.modal.open(
                           SubmitModalComponent,
                           { title: confirmationTitle,
                             message1: confirmationMessage1,
                             message2: confirmationMessage2,
-                            button: 'Next Steps' });
+                            button: 'Claim Status' });
 
           modal.closed$.subscribe(result => {
             if (result === 'Closing') {
-              // window.location.href = 'https://www.directline.com/car-cover/claims';
+              this.router.navigate(['claim-status']);
             } else {
-              // window.location.href = 'https://www.directline.com';
+              this.router.navigate(['']);
             }
           });
 

@@ -17,6 +17,15 @@ app-progress-bar {
   &__logo {
     height: 2rem;
     margin: 0 auto;
+    border: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:focus {
+      border: none;
+    }
   }
 
   &__step-image {
@@ -94,5 +103,34 @@ app-progress-bar {
 
   @include hg-mq('med') {
     padding-top: 0.5rem;
+  }
+
+  &__claim-status {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    align-items: center;
+    justify-items: center;
+    grid-row-gap: 20px;
+
+    .badge {
+      background-color: darkred;
+      color: white;
+      font-weight: bold;
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      line-height: 25px;
+      display: inline-block;
+      text-align: center;
+      margin-left: 10px;
+    }
+    
+    .active-status, .inactive-status {
+      font-weight: bold;
+    }
+
+    .inactive-status {
+      color: lightgrey;
+    }
   }
 }

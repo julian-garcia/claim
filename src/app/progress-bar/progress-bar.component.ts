@@ -1,19 +1,24 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, Input } from '@angular/core';
 import { StorageService } from '../shared/services/storage.service';
+import { Router } from '@angular/router';
+import { CLAIMSTATUSES } from '../shared/data/claim-statuses';
 
 @Component({
   selector: 'app-progress-bar',
   templateUrl: './progress-bar.component.html',
   styleUrls: ['./progress-bar.component.scss']
 })
-export class ProgressBarComponent implements OnInit, OnDestroy {
+export class ProgressBarComponent implements OnInit, OnDestroy, AfterViewInit {
+  @Input() claimsCounts?: {};
   step1Classes;
   step2Classes;
   step3Classes;
   step4Classes;
+  claimStatuses = CLAIMSTATUSES;
 
   constructor(
-    private storage: StorageService
+    private storage: StorageService,
+    public router: Router
   ) { }
 
   checkSectionValidity(sectionName: string, classList) {
@@ -24,19 +29,22 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnInit() {
-    const progressSteps = document.querySelectorAll('.progress__step');
-    this.step1Classes = progressSteps[0].classList;
-    this.step2Classes = progressSteps[1].classList;
-    this.step3Classes = progressSteps[2].classList;
-    this.step4Classes = progressSteps[3].classList;
-    window.addEventListener('scroll', this.scroll, true);
-
-    this.checkSectionValidity('personalSectionValues', this.step1Classes);
-    this.checkSectionValidity('claimSectionValues', this.step2Classes);
-    this.checkSectionValidity('claimDetailSectionValues', this.step3Classes);
-    this.checkSectionValidity('confirmationSectionValues', this.step4Classes);
+  ngAfterViewInit() {
+    if (this.router.url === '/make-a-claim') {
+      const progressSteps = document.querySelectorAll('.progress__step');
+      this.step1Classes = progressSteps[0].classList;
+      this.step2Classes = progressSteps[1].classList;
+      this.step3Classes = progressSteps[2].classList;
+      this.step4Classes = progressSteps[3].classList;
+      this.checkSectionValidity('personalSectionValues', this.step1Classes);
+      this.checkSectionValidity('claimSectionValues', this.step2Classes);
+      this.checkSectionValidity('claimDetailSectionValues', this.step3Classes);
+      this.checkSectionValidity('confirmationSectionValues', this.step4Classes);
+      window.addEventListener('scroll', this.scroll, true);
+    }
   }
+
+  ngOnInit() { }
 
   ngOnDestroy() {
     window.removeEventListener('scroll', this.scroll, true);

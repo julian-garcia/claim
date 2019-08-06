@@ -110,6 +110,7 @@ export class PersonalDetailsComponent implements OnInit, OnDestroy, AfterViewIni
   }
 
   ngAfterViewInit() {
+    this.progressStep = document.querySelector('.progress__step1');
     this.decibel.setTrackingAttributes(this.formData);
     document.getElementById('fullName').focus();
   }
@@ -140,8 +141,6 @@ export class PersonalDetailsComponent implements OnInit, OnDestroy, AfterViewIni
         this.excess = JSON.parse(policyNumberExcess).excess;
       }
     }
-
-    this.progressStep = document.querySelector('.progress__step1');
 
     this.formNameSubscription = this.form.controls.fullName.valueChanges
       .subscribe(value => { this.clearAutofillSection(); });

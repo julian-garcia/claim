@@ -39,12 +39,12 @@ export class ConfirmationComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    this.progressStep = document.querySelector('.progress__step4');
     this.decibel.setTrackingAttributes(this.formData);
   }
 
   ngOnInit() {
     this.buildForm();
-    this.progressStep = document.querySelector('.progress__step4');
 
     this.form.valueChanges.subscribe(values => {
       values.sectionValid = this.isSectionValid();

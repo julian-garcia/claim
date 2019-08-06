@@ -7,6 +7,9 @@ import { Claim } from '../data-objects/claim';
   providedIn: 'root'
 })
 export class StaticDataService {
+  protected urlPolicies = 'http://localhost:3000/policyholders';
+  protected urlClaims = 'http://localhost:3004/claims';
+
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json'
@@ -19,10 +22,14 @@ export class StaticDataService {
 
   getPolicyHolderData(name: string, pcode: string) {
     const pcodeRegEx = pcode.replace(' ', '').split('').join('\\s*');
-    return this.httpClient.get<PolicyHolder[]>(`http://localhost:3000/policyholders?name_like=${name}&postCode_like=^${pcodeRegEx}$`);
+    return this.httpClient.get<PolicyHolder[]>(`${this.urlPolicies}?name_like=${name}&postCode_like=^${pcodeRegEx}$`);
   }
 
   postClaimData(claim: Claim) {
-    return this.httpClient.post<Claim>(`http://localhost:3004/claims`, claim, this.httpOptions);
+    return this.httpClient.post<Claim>(`${this.urlClaims}`, claim, this.httpOptions);
+  }
+
+  getClaims(email: string) {
+    return this.httpClient.get<Claim[]>(`${this.urlClaims}?emailAddress=${email}`);
   }
 }

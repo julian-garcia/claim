@@ -1,5 +1,5 @@
-<img src="../../assets/images/logo.png" alt="Direct Line" class="progress__logo">
-<div class="progress__steps">
+<img src="../../assets/images/logo.png" alt="Direct Line" class="progress__logo" [routerLink]="['']">
+<div class="progress__steps" *ngIf = "router.url === '/make-a-claim'">
   <div class="progress__step progress__step1 progress__active-step">
     <img src="../../assets/images/personal.png" alt="Personal Details" class="progress__step-image">
   </div>
@@ -12,4 +12,15 @@
   <div class="progress__step progress__step4">
     <img src="../../assets/images/confirm.png" alt="Confirmation" class="progress__step-image">
   </div>
+</div>
+<div class="progress__claim-status" *ngIf = "router.url === '/claim-status'">
+  <ng-container *ngFor="let status of claimStatuses">
+    <div class="progress__claim-stage progress__active-stage">
+      <span *ngIf="claimsCounts[status]" class="active-status">{{ status }}</span>
+      <span *ngIf="!claimsCounts[status]" class="inactive-status">{{ status }}</span>
+      <ng-container *ngIf="claimsCounts[status]">
+        <span class="badge">{{ claimsCounts[status] }}</span>
+      </ng-container>
+    </div>
+  </ng-container>
 </div>

@@ -55,6 +55,7 @@ export class ClaimOverviewComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    this.progressStep = document.querySelector('.progress__step2');
     this.decibel.setTrackingAttributes(this.formData);
   }
 
@@ -72,8 +73,6 @@ export class ClaimOverviewComponent implements OnInit, AfterViewInit {
       this.form.controls.claimLocation.markAsDirty();
     }
 
-    this.progressStep = document.querySelector('.progress__step2');
-
     this.form.valueChanges.subscribe(values => {
       values.sectionValid = this.isSectionValid();
       this.validClaimOverview.emit(values);
@@ -81,10 +80,12 @@ export class ClaimOverviewComponent implements OnInit, AfterViewInit {
       this.storage.setSectionValue(this.sectionName, 'sectionValid', values.sectionValid);
       this.storage.saveSectionValues(this.sectionName, this.form.value);
 
-      if (values.sectionValid) {
-        this.progressStep.classList.add('progress__valid-step');
-      } else {
-        this.progressStep.classList.remove('progress__valid-step');
+      if (this.progressStep) {
+        if (values.sectionValid) {
+          this.progressStep.classList.add('progress__valid-step');
+        } else {
+          this.progressStep.classList.remove('progress__valid-step');
+        }
       }
     });
   }

@@ -1483,6 +1483,61 @@
       "awareExcess": true,
       "convictions": "Yes",
       "id": 50
+    },
+    {
+      "policyNumber": "",
+      "fullName": "Julian Garcia",
+      "phoneNumber": "447789748489",
+      "emailAddress": "julian.garcia.leoni@gmail.com",
+      "addressLine": "Flat 22 Hazelwood House Church Road Shortlands",
+      "postCode": "BR2 0HE",
+      "incidentDate": [
+        "3",
+        "2",
+        "2019"
+      ],
+      "whatHappened": "l;poo",
+      "claimLocation": "UK",
+      "occupied": "",
+      "damage": "Contents",
+      "damagedItems": [
+        {
+          "type": "f",
+          "make": "f",
+          "price": "77"
+        }
+      ],
+      "fileUploads": [],
+      "callbackSlot": "Evening (4pm-8pm)",
+      "termsConditions": true,
+      "awareExcess": true,
+      "convictions": "Yes",
+      "id": 51
+    },
+    {
+      "policyNumber": 12345678,
+      "fullName": "Julian Garcia",
+      "phoneNumber": "4911806419",
+      "emailAddress": "myemail@mail.com",
+      "addressLine": "6 Burning Wood Court",
+      "postCode": "BR1 1DP",
+      "incidentDate": [
+        "2",
+        "3",
+        "2019"
+      ],
+      "whatHappened": "uupuop",
+      "claimLocation": "UK",
+      "occupied": "",
+      "damage": "Building",
+      "damagedItems": [],
+      "fileUploads": [],
+      "callbackSlot": "Evening (4pm-8pm)",
+      "termsConditions": true,
+      "awareExcess": true,
+      "convictions": "No",
+      "status": "Submitted",
+      "id": 52
     }
   ]
 }
