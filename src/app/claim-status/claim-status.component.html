@@ -2,11 +2,17 @@
   <app-progress-bar [claimsCounts]="claimsCounts"></app-progress-bar>
 </div>
 
-<dlg-field [config]="formData.emailAddress" [formGroup]="form">
-  <dlg-input></dlg-input>
-</dlg-field>
+<div class="fnol-form__section">
+  <h2 class="fnol-form__title">Your claim status</h2>
 
-<button dlg-button (click)="findClaims()" [disabled]="!validEmail()">Find my claims</button>
+  <p>If you're looking to make a claim you can <a [routerLink]="['/make-a-claim']">make a claim here</a>.</p>
+
+  <dlg-field [config]="formData.emailAddress" [formGroup]="form">
+    <dlg-input></dlg-input>
+  </dlg-field>
+
+  <button dlg-button (click)="findClaims()" [disabled]="!validEmail()">Find my claims</button>
+</div>
 
 <ng-container *ngIf="claimsFound()">
   <p>Your claim history is listed below, most recent first</p>
@@ -19,7 +25,7 @@
     </tr>
     <tr *ngFor="let claim of claims">
       <td class="fnol-form__list-item">{{ claim.policyNumber }}</td>
-      <td class="fnol-form__list-item">{{ claim.whatHappened }}</td>
+      <td class="fnol-form__list-item">{{ claim.whatHappened | slice:0:20 }}...</td>
       <td class="fnol-form__list-item bold" *ngIf="claim.status">{{ claim.status }}</td>
       <td class="fnol-form__list-item bold" *ngIf="!claim.status">Logged</td>
     </tr>

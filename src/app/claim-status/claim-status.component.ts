@@ -1,10 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { FieldConfig, Hint } from 'dlg-angular-components';
+import { FieldConfig, Hint, ModalService } from 'dlg-angular-components';
 import { CLAIMSTATUSES } from '../shared/data/claim-statuses';
 import { PersonalDetailsValidator } from '../shared/validators/personal-details.validator';
 import { StaticDataService } from '../shared/services/static-data.service';
 import { StorageService } from '../shared/services/storage.service';
+import { SubmitModalComponent } from '../fnol/submit-modal.component';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -45,6 +46,20 @@ export class ClaimStatusComponent implements OnInit, OnDestroy {
         const status = (claim.status) ? claim.status : 'Logged';
         this.claimsCounts[status]++;
       }
+    },
+    error => {
+      const confirmationTitle = 'Unable to find your claim.';
+      const confirmationMessage1 = `
+          Sorry, we could not find your claim. Please try again later.`;
+      const confirmationMessage2 = `
+          Please contact us if you continue to experience issues.`;
+
+      const modal = this.modal.open(
+                      SubmitModalComponent,
+                      { title: confirmationTitle,
+                        message1: confirmationMessage1,
+                        message2: confirmationMessage2,
+                        button: 'Try again' });
     });
   }
 
@@ -65,11 +80,15 @@ export class ClaimStatusComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private dataService: StaticDataService,
-    private storage: StorageService
+    private storage: StorageService,
+    public modal: ModalService,
   ) { }
 
   ngOnInit() {
-    const emailAddress = this.storage.retrieveSectionValues('personalSectionValues').emailAddress;
+    const emailAddress =
+      this.storage.retrieveSectionValues('personalSectionValues').emailAddress ||
+      this.dataService.claimEmail;
+
     this.form = this.fb.group({
       emailAddress: [emailAddress, this.formData.emailAddress.validation],
     });
@@ -81,6 +100,7 @@ export class ClaimStatusComponent implements OnInit, OnDestroy {
       this.claimsExist = true;
       this.claims = [];
       this.claimsCounts = {};
+      this.dataService.claimEmail = emailChange.emailAddress;
     });
   }
 

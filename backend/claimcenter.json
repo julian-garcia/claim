@@ -1318,7 +1318,8 @@
       "termsConditions": true,
       "awareExcess": true,
       "convictions": "No",
-      "id": 44
+      "id": 44,
+      "status": "Approved"
     },
     {
       "policyNumber": 12345678,
@@ -1538,6 +1539,62 @@
       "convictions": "No",
       "status": "Submitted",
       "id": 52
+    },
+    {
+      "policyNumber": 12345678,
+      "fullName": "Julian Garcia",
+      "phoneNumber": "4911806419",
+      "emailAddress": "myemail@mail.com",
+      "addressLine": "6 Burning Wood Court",
+      "postCode": "BR1 1DP",
+      "incidentDate": [
+        "3",
+        "9",
+        "2018"
+      ],
+      "whatHappened": "A test claim",
+      "claimLocation": "UK",
+      "occupied": "",
+      "damage": "Contents",
+      "damagedItems": [
+        {
+          "type": "toaster",
+          "make": "ford",
+          "price": "900"
+        }
+      ],
+      "fileUploads": [],
+      "callbackSlot": "Morning (8am-12pm)",
+      "termsConditions": true,
+      "awareExcess": true,
+      "convictions": "No",
+      "status": "Logged",
+      "id": 53
+    },
+    {
+      "policyNumber": 1234568,
+      "fullName": "Chaunce Andriuzzi",
+      "phoneNumber": "5761324334",
+      "emailAddress": "candriuzzi1@google.nl",
+      "addressLine": "8641 Moulton Crossing",
+      "postCode": "UH0 9AR",
+      "incidentDate": [
+        "4",
+        "6",
+        "2019"
+      ],
+      "whatHappened": "Another claim for me",
+      "claimLocation": "At home",
+      "occupied": "No",
+      "damage": "Building",
+      "damagedItems": [],
+      "fileUploads": [],
+      "callbackSlot": "Morning (8am-12pm)",
+      "termsConditions": true,
+      "awareExcess": true,
+      "convictions": "No",
+      "status": "Logged",
+      "id": 54
     }
   ]
 }

@@ -7,6 +7,7 @@ import { Claim } from '../data-objects/claim';
   providedIn: 'root'
 })
 export class StaticDataService {
+  claimEmail: string;
   protected urlPolicies = 'http://localhost:3000/policyholders';
   protected urlClaims = 'http://localhost:3004/claims';
 

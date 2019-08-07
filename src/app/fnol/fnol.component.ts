@@ -124,6 +124,7 @@ export class FnolComponent implements OnInit {
     this.dataService.postClaimData(postClaim)
       .subscribe(post => {
         if (post) {
+          this.dataService.claimEmail = postClaim.emailAddress;
           this.storage.clearStoredVariables();
 
           const confirmationTitle = 'Thank You, your claim has been logged.';
