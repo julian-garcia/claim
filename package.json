@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "preinstall": "npm install -g http-server",
-    "postinstall": "mv dist/claims/* .",
+    "postinstall": "ng build && mv dist/claims/* .",
     "e2e": "ng e2e"
   },
   "private": true,
