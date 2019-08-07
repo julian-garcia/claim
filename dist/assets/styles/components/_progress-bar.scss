@@ -1,0 +1,138 @@
+app-progress-bar {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 1rem;
+
+  @include hg-mq('med') {
+    grid-template-columns: 1fr 4fr;
+  }
+}
+
+.progress {
+  min-height: 4rem;
+  background-color: $body-bg-colour;
+  box-shadow: 0px 9px 11px -6px rgba(0,0,0,0.2);
+  z-index: 999;
+
+  &__logo {
+    height: 3rem;
+    margin: 0 auto;
+    border: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:focus {
+      border: none;
+    }
+  }
+
+  &__step-image {
+    height: 2rem;
+    position: relative;
+    z-index: 99;
+  }
+
+  &__steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    justify-items: center;
+  }
+
+  &__step {
+    border-bottom: 3px solid transparent;
+  }
+
+  &__active-step {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    margin-top: -1rem;
+    padding-top: 1.5rem;
+    min-height: 4.5rem;
+    position: relative;
+    border-bottom: 3px solid darkred;
+
+    &:after {
+      content: "";
+      height: 40px;
+      width: 40px;
+      background-color: white;
+      position: absolute;
+      left: calc(50% - 6px);
+      bottom: -20px;
+      transform: rotate(45deg) translateX(-50%);
+      transform-origin: center;
+    }
+  }
+
+  &__valid-step {
+    background-color: #90dfdb;
+    border-bottom: 3px solid darken(#90dfdb, 30);
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    margin-top: -1rem;
+    padding-top: 1.5rem;
+    min-height: 4.5rem;
+    position: relative;
+
+    &:after {
+      background-color: #90dfdb;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      display: block;
+      background-image: url(/assets/images/check.png);
+      background-size: 30px 30px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: rgba(255, 255, 255, 0.6);
+      height: 100%;
+      width: 100%;
+      top: 0;
+      padding-top: 30px;
+      z-index: 999;
+    }
+  }
+
+  @include hg-mq('med') {
+    padding-top: 0.5rem;
+  }
+
+  &__claim-status {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    align-items: center;
+    justify-items: center;
+    grid-row-gap: 20px;
+    min-height: 3rem;
+    padding: 1rem 0;
+
+    .badge {
+      background-color: darkred;
+      color: white;
+      font-weight: bold;
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      line-height: 25px;
+      display: inline-block;
+      text-align: center;
+      margin-left: 10px;
+    }
+
+    .active-status, .inactive-status {
+      font-weight: bold;
+    }
+
+    .inactive-status {
+      color: lightgrey;
+    }
+  }
+}

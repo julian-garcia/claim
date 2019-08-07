@@ -1,0 +1,20 @@
+$button-border-width:           3px;
+
+@import 'node_modules/dlg-angular-components/dist/dlg-walrus/lib/button/button.component';
+
+.dlg-button {
+  background-color: white;
+
+  &.fnol-submit {
+    margin-top: -60px;
+    width: 100%;
+    display: block;
+    font-size: 22px;
+    line-height: 28px;
+    padding: 10px;
+  }
+
+  &.fnol-autofill {
+    margin-top: 30px;
+  }
+}
