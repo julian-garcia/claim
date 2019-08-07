@@ -1,0 +1,12 @@
+$datepicker-select-width: 150px;
+$select-border-width:     3px;
+
+@import 'node_modules/dlg-angular-components/dist/dlg-walrus/lib/datepicker/datepicker.component',
+        'node_modules/dlg-angular-components/dist/dlg-walrus/lib/select/select.component';
+
+.dlg-select {
+  select {
+    display: inline-block;
+    width: inherit;
+  }
+}
