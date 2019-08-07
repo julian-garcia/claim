@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start": "http-server",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "postinstall": "ng build --aot --prod",
+    "preinstall": "npm install -g http-server",
+    "postinstall": "mv dist/claims/* .",
     "e2e": "ng e2e"
   },
   "private": true,

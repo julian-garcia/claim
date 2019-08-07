@@ -1,0 +1,12 @@
+@import 'node_modules/dlg-angular-components/dist/dlg-walrus/lib/modal/modal.component';
+
+.modal-confirmation {
+  &__message {
+    margin-bottom: 1rem;
+  }
+
+  &__button {
+    display: block;
+    margin: 0 auto;
+  }
+}
