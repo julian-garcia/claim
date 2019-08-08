@@ -32,6 +32,10 @@ export class CommonValidator {
       inDate = new Date(parseInt(yearField),
                         parseInt(monthField) - 1,
                         parseInt(dayField));
+
+      if ((parseInt(monthField) - 1) !== inDate.getMonth()) {
+        return { invalidDateDay: true };
+      }
       if (inDate > dateNow || inDate < minDate) {
         return { invalidDateRange: true };
       }

@@ -14,6 +14,7 @@ export const FORMFIELDS = {
     validationMessages: {
       required: 'Please specify when the incident happened',
       invalidDate: 'Please enter a valid date',
+      invalidDateDay: 'The day is not valid for the month currently selected',
       invalidDateRange: 'The date should be between 12 months ago and today'
     },
     format: {
