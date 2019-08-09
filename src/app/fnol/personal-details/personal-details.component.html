@@ -1,8 +1,8 @@
 <div class="fnol-form__section">
-  <h2 class="fnol-form__title">Personal Details</h2>
+  <h2 class="fnol-form__subtitle">Personal Details</h2>
 
   <dlg-field [config]="formData.fullName" [formGroup]="form">
-    <dlg-input></dlg-input>
+    <dlg-input #fullNameElement></dlg-input>
   </dlg-field>
 
   <dlg-field [config]="formData.postCode" [formGroup]="form" class="last-field">
@@ -12,7 +12,7 @@
   <button dlg-button [disabled]="!isAutofillable()" (click)="getPolicyHolder()" class="fnol-autofill">Find my details</button>
 
   <dlg-field [config]="formData.phoneNumber" [formGroup]="form">
-    <dlg-input></dlg-input>
+    <dlg-input #phoneNumberElement></dlg-input>
   </dlg-field>
 
   <dlg-field [config]="formData.emailAddress" [formGroup]="form">

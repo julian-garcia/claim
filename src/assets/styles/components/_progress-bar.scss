@@ -4,7 +4,7 @@ app-progress-bar {
   grid-row-gap: 1rem;
 
   @include hg-mq('med') {
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: .5fr 4fr;
   }
 }
 

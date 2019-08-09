@@ -1,8 +1,11 @@
 <div class="progress">
   <app-progress-bar></app-progress-bar>
 </div>
-<h2 class="fnol-form__subtitle fnol-form__emergency">For emergencies call us on: <strong>0123456789</strong></h2>
-<p>Already made a claim? You can <a [routerLink]="['/claim-status']">check its status here</a>.</p>
+<div class="fnol-form__section">
+  <h2 class="fnol-form__title">Make a claim</h2>
+  <h2 class="fnol-form__subtitle fnol-form__emergency no-margin">For emergencies call us on: <strong>0123456789</strong></h2>
+  <p>Already made a claim? You can <a [routerLink]="['/claim-status']">check its status here</a>.</p>
+</div>
 <form id="fnol-form" data-di-form-track data-di-form-id="fnol-form" [formGroup]="form">
   <app-personal-details (validPersonalDetails)='retrievePersonalDetails($event)'></app-personal-details>
   <app-claim-overview (validClaimOverview)='retrieveClaimOverview($event)'></app-claim-overview>

@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter, OnDestroy, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter,
+         OnDestroy, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { FORMFIELDS } from './form-fields';
@@ -14,6 +15,8 @@ import { DecibelService } from '../../shared/services/decibel.service';
 })
 export class PersonalDetailsComponent implements OnInit, OnDestroy, AfterViewInit {
   @Output() validPersonalDetails = new EventEmitter();
+  @ViewChild('fullNameElement', {static: false}) fullNameElement: ElementRef;
+  @ViewChild('phoneNumberElement', {static: false}) phoneNumberElement: ElementRef;
 
   form: FormGroup;
   formData: any = FORMFIELDS;
@@ -75,7 +78,7 @@ export class PersonalDetailsComponent implements OnInit, OnDestroy, AfterViewIni
               button: 'Fill in my details'  });
 
           modal.closed$.subscribe(result => {
-            document.getElementById('phoneNumber').focus();
+            this.phoneNumberElement['field'].elementRef.nativeElement.querySelector('#phoneNumber').focus();
           });
         }
       },
@@ -88,7 +91,7 @@ export class PersonalDetailsComponent implements OnInit, OnDestroy, AfterViewIni
             button: 'Fill in my details'  });
 
         modal.closed$.subscribe(result => {
-          document.getElementById('phoneNumber').focus();
+          this.phoneNumberElement['field'].elementRef.nativeElement.querySelector('#phoneNumber').focus();
         });
       });
   }
@@ -112,7 +115,7 @@ export class PersonalDetailsComponent implements OnInit, OnDestroy, AfterViewIni
   ngAfterViewInit() {
     this.progressStep = document.querySelector('.progress__step1');
     this.decibel.setTrackingAttributes(this.formData);
-    document.getElementById('fullName').focus();
+    this.fullNameElement['field'].elementRef.nativeElement.querySelector('#fullName').focus();
   }
 
   ngOnInit() {

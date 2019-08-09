@@ -1,8 +1,8 @@
 <div class="fnol-form__section">
-  <h2 class="fnol-form__title">Your Claim</h2>
+  <h2 class="fnol-form__subtitle">Your Claim</h2>
 
   <dlg-field [config]="formData.incidentDate" [formGroup]="form">
-    <dlg-datepicker type="select" [format]="formData.incidentDate.format" ></dlg-datepicker>
+    <dlg-datepicker type="select" [format]="formData.incidentDate.format" #incidentDateElement></dlg-datepicker>
   </dlg-field>
 
   <dlg-field [config]="formData.whatHappened" [formGroup]="form">

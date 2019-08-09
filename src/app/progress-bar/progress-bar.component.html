@@ -1,6 +1,6 @@
 <img src="../../assets/images/logo.png" alt="Direct Line" class="progress__logo" [routerLink]="['']">
 <div class="progress__steps" *ngIf = "router.url === '/make-a-claim'">
-  <div class="progress__step progress__step1 progress__active-step">
+  <div class="progress__step progress__step1 progress__active-step" #step1>
     <img src="../../assets/images/personal.png" alt="Personal Details" class="progress__step-image">
   </div>
   <div class="progress__step progress__step2">

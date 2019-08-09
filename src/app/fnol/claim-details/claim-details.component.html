@@ -1,5 +1,5 @@
 <div class="fnol-form__section">
-  <h2 class="fnol-form__title">Claim Details</h2>
+  <h2 class="fnol-form__subtitle">Claim Details</h2>
 
   <dlg-field [config]="formData.damage" [formGroup]="form">
     <dlg-radio></dlg-radio>
@@ -47,7 +47,7 @@
     </table>
   </div>
 
-  <h3 class="fnol-form__subtitle">Supporting Documents</h3>
+  <h3 class="dlg-field__label">Supporting Documents</h3>
   <div class="dlg-hint__text">{{ formData.fileUploads.hint.text }}</div>
 
   <dlg-field [config]="formData.fileUploads" [formGroup]="form" class="fnol-form__uploads">
